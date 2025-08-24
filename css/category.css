@@ -1,0 +1,155 @@
+.category-product-card {
+    background-color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    position: relative;
+    transition: transform 0.2s, box-shadow 0.2s;
+    height: 450px;
+}
+
+.category-product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.category-product-img {
+    max-width: 100%;
+    height: inherit;
+    margin-bottom: 10px;
+}
+
+.category-product-title {
+    font-size: 1rem;
+    margin-bottom: 0px;
+    color: #0F1111;
+    min-height: 15px;
+}
+
+.category-product-price {
+    font-weight: bold;
+    color: #B12704;
+    /* margin-bottom: 8px; */
+}
+
+.category-product-rating {
+    color: #FFA41C;
+    /* margin-bottom: 10px; */
+}
+
+.add-to-cart-btn {
+    width: 60%;
+    padding: 5px;
+    background: #FFD814;
+    border: none;
+    border-radius: 20px;
+    font-weight: 500;
+    transition: background 0.2s;
+}
+
+.add-to-cart-btn:hover {
+    background: #F7CA00;
+}
+
+/* Responsive Grid */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px 0;
+}
+
+@media (min-width: 1200px) {
+    .product-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+#category-products {
+    min-height: 400px;
+    margin-bottom: 40px;
+}
+
+/* Add to cart notification */
+.alert {
+   position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    transition: opacity 0.5s ease-in-out;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-weight: 500;
+    text-align: center;
+    min-width: 200px;
+
+}
+
+.alert-success {
+    background-color: #232f3e;
+    color: white;
+    border: none;
+}
+
+.alert-error {
+    background-color: #B12704;
+    color: white;
+    border: none;
+}
+
+/* Add these styles for active states */
+.btn.active {
+    background-color: #232f3e !important;
+    color: #fff !important;
+}
+
+.list-group-item-action.active {
+    background-color: #232f3e !important;
+    color: #fff !important;
+    border-color: #232f3e !important;
+}
+
+
+/* Add these styles for clickable elements */
+.product-link {
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.product-link:hover {
+    opacity: 0.8;
+}
+
+.product-category-link {
+    color: #007185;
+    text-decoration: none;
+    font-size: 0.9rem;
+    margin: 5px 0;
+    display: inline-block;
+}
+
+.product-category-link:hover {
+    color: #C7511F;
+    text-decoration: underline;
+}
+
+/* Cart item styles */
+.cart-item-img,
+.cart-item-details h6 {
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.cart-item-img:hover,
+.cart-item-details h6:hover {
+    opacity: 0.8;
+}
+.image-size{
+    height: 70%;
+   display: flex;
+  justify-content: center; 
+  align-items: center;   
+}

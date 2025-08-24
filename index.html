@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amazon Clone</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- Top Navbar -->
+    <nav
+      class="navbar navbar-expand-lg bg-dark navbar-dark px-4 navbar-padding"
+    >
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img
+          src="https://www.pngplay.com/wp-content/uploads/3/White-Amazon-Logo-PNG-HD-Quality.png"
+          alt="Amazon"
+          style="height: 32px; margin-top: 19px"
+        />
+        <span class="d-none d-md-inline">.in</span>
+      </a>
+      <a id="nav-global-location-popover-link" class="nav-a " href="">
+            <div id="glow-ingress-block">
+                <span class="nav-line-1 " id="glow-ingress-line1">
+                   Deliver to pranav
+                </span>
+                <span class="nav-line-2 nav-progressive-content" id="glow-ingress-line2">
+                    <h6 style="margin: 0;"><i class="bi bi-geo-alt-fill text-white"></i>Betul 460001‌</h6>
+                </span>
+            </div>
+        </a>
+      <div class="mx-auto" style="width: 50%">
+        <form id="search-form" class="search-bar d-flex align-items-center">
+          <select id="search-category" class="search-select">
+            <option value="All">All Categories</option>
+            <option value="Mobile Accessories">Mobile Accessories</option>
+            <option value="Camera & Photo">Camera & Photo</option>
+            <option value="Home Appliances">Home Appliances</option>
+            <option value="Fitness">Fitness</option>
+            <option value="Gaming">Gaming</option>
+            <option value="Smart Home">Smart Home</option>
+            <option value="Audio Devices">Audio Devices</option>
+            <option value="Computer Accessories">Computer Accessories</option>
+            <option value="Laptops">Laptops</option>
+            <option value="Smartphones">Smartphones</option>
+            <option value="TVs">TVs</option>
+            <option value="Storage Devices">Storage Devices</option>
+            <option value="Laptop Bags">Laptop Bags</option>
+          </select>
+          <input
+            id="search"
+            class="search-input"
+            type="search"
+            placeholder="Search Amazon.in"
+          />
+          <button class="search-btn" type="submit">
+            <i class="bi bi-search"></i>
+          </button>
+        </form>
+      </div>
+      <div class="d-flex align-items-center">
+        <div class="my-add">
+    <!-- Language -->
+    <div class="my-add1 padding-right">
+      <img src="https://flagcdn.com/w20/in.png" alt="India Flag"> 
+      <span class="nav-text">EN ▾</span>
+    </div>
+
+    <!-- Account & Lists -->
+    <div class="my-add2 padding-right">
+      <span class="nav-line-1">Hello, pranav</span>
+      <br>
+      <span class="nav-line-1">Account & Lists ▾</span>
+    </div>
+    
+  </div>
+        
+       <a href="cart.html" class="btn btn-warning ms-2"  style="background-color: #ffc107;">Cart (<span id="cart-count">0</span>)</a >
+
+
+
+
+
+      </div>
+    </nav>
+    
+
+    <!-- Offcanvas Sidebar   -->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="sidebar">
+      <div class="offcanvas-header bg-dark text-white">
+        <i class="bi bi-person-circle fs-2 me-2"> </i>
+        <h5 class="offcanvas-title">Hello, User</h5>
+        <button
+          type="button"
+          class="btn-close btn-close-white"
+          data-bs-dismiss="offcanvas"
+        ></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="list-group">
+          <!-- Category links will be injected here  -->
+        </ul>
+      </div>
+    </div>
+    <!-- Category Menu -->
+    <div class="catgory-b-color shadow-sm">
+      <div id="categories" class="container d-flex gap-3 flex-wrap"></div>
+    </div>
+
+    <!-- Hero Banner Carousel -->
+    <div class="container-fluid margin-hero position-relative">
+      <div id="hero-carousel" class="position-relative">
+        <img
+          id="hero-img"
+          src="https://images-eu.ssl-images-amazon.com/images/G/31/img21/APAY/PD/travel/Dubai_PC-Hero-Template_GW_3000x1200._CB789421893_.jpg"
+          alt="Amazon Banner"
+          class="img-fluid shadow-sm w-100"
+        />
+
+        <!-- Blur overlay -->
+        <div class="hero-blur"></div>
+        <!-- Left Arrow -->
+        <button id="hero-left" class="carousel-arrow left-arrow">
+          <i class="bi bi-chevron-left"></i>
+        </button>
+        <!-- Right Arrow -->
+        <button id="hero-right" class="carousel-arrow right-arrow">
+          <i class="bi bi-chevron-right"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Product Grid -->
+    <div class="product-grid-1">
+      <div class="container section-over-hero">
+        <div id="product-list"></div>
+      </div>
+    </div>
+
+    <!-- Related Products Slider -->
+    <div class="container mt-4 white-bg">
+      <div
+        class="d-flex justify-content-between align-items-center padding-top"
+      >
+        <h4>Related to items you've viewed</h4>
+        <a
+          href="product-listing-page.html?category=related"
+          class="text-primary text-decoration-none see-more-link"
+          data-category="related"
+          >See more</a
+        >
+      </div>
+      <div class="position-relative">
+        <button id="scroll-left" class="scroll-arrow scroll-left">
+          <i class="bi bi-chevron-left"></i>
+        </button>
+        <div id="related-products" class="related-products-container">
+          <!-- Products will be rendered here -->
+        </div>
+        <button id="scroll-right" class="scroll-arrow scroll-right">
+          <i class="bi bi-chevron-right"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Recommended Products Slider -->
+    <div class="container mt-4 white-bg">
+      <div
+        class="d-flex justify-content-between align-items-center padding-top"
+      >
+        <h4>Recommended for you</h4>
+        <a
+          href="product-listing-page.html?category=recommended"
+          class="text-primary text-decoration-none see-more-link"
+          data-category="recommended"
+          >See more</a
+        >
+      </div>
+      <div class="position-relative">
+        <button id="rec-scroll-left" class="scroll-arrow scroll-left">
+          <i class="bi bi-chevron-left"></i>
+        </button>
+        <div id="recommended-products" class="related-products-container">
+          <!-- Products will be rendered here -->
+        </div>
+        <button id="rec-scroll-right" class="scroll-arrow scroll-right">
+          <i class="bi bi-chevron-right"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Trending Products Grid -->
+    <div class="product-grid-1 padding-top">
+      <div class="container">
+        <div id="trending-list"></div>
+      </div>
+    </div>
+    <!-- New Products Slider -->
+    <div class="container mt-4 white-bg">
+      <div
+        class="d-flex justify-content-between align-items-center padding-top"
+      >
+        <h4>New arrivals in Electronics</h4>
+        <a
+          href="product-listing-page.html?category=new_arrivals"
+          class="text-primary text-decoration-none see-more-link"
+          data-category="new_arrivals"
+          >See more</a
+        >
+      </div>
+      <div class="position-relative">
+        <button id="new-scroll-left" class="scroll-arrow scroll-left">
+          <i class="bi bi-chevron-left"></i>
+        </button>
+        <div id="new-products" class="related-products-container">
+          <!-- Products will be rendered here -->
+        </div>
+        <button id="new-scroll-right" class="scroll-arrow scroll-right">
+          <i class="bi bi-chevron-right"></i>
+        </button>
+      </div>
+    </div>
+    <!-- Footer -->
+    <footer>
+      <div class="footer-top py-3" style="background: #37475a">
+        <div class="container text-center">
+          <button
+            id="back-to-top"
+            class="btn btn-link text-white text-decoration-none"
+          >
+            Back to top
+          </button>
+        </div>
+      </div>
+      <div class="footer-links py-4" style="background: #232f3e">
+        <div class="container">
+          <div class="row text-white">
+            <div class="col-md-3 mb-3">
+              <h5 class="fw-bold">Get to Know Us</h5>
+              <ul class="list-unstyled">
+                <li><a href="#" class="footer-link">About Amazon</a></li>
+                <li><a href="#" class="footer-link">Careers</a></li>
+                <li><a href="#" class="footer-link">Press Releases</a></li>
+                <li><a href="#" class="footer-link">Amazon Science</a></li>
+              </ul>
+            </div>
+            <div class="col-md-3 mb-3">
+              <h5 class="fw-bold">Connect with Us</h5>
+              <ul class="list-unstyled">
+                <li><a href="#" class="footer-link">Facebook</a></li>
+                <li><a href="#" class="footer-link">Twitter</a></li>
+                <li><a href="#" class="footer-link">Instagram</a></li>
+              </ul>
+            </div>
+            <div class="col-md-3 mb-3">
+              <h5 class="fw-bold">Make Money with Us</h5>
+              <ul class="list-unstyled">
+                <li><a href="#" class="footer-link">Sell on Amazon</a></li>
+                <li>
+                  <a href="#" class="footer-link"
+                    >Sell under Amazon Accelerator</a
+                  >
+                </li>
+                <li>
+                  <a href="#" class="footer-link"
+                    >Protect and Build Your Brand</a
+                  >
+                </li>
+                <li>
+                  <a href="#" class="footer-link">Amazon Global Selling</a>
+                </li>
+                <li><a href="#" class="footer-link">Supply to Amazon</a></li>
+                <li><a href="#" class="footer-link">Become an Affiliate</a></li>
+                <li>
+                  <a href="#" class="footer-link">Fulfilment by Amazon</a>
+                </li>
+                <li>
+                  <a href="#" class="footer-link">Advertise Your Products</a>
+                </li>
+                <li>
+                  <a href="#" class="footer-link">Amazon Pay on Merchants</a>
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-3 mb-3">
+              <h5 class="fw-bold">Let Us Help You</h5>
+              <ul class="list-unstyled">
+                <li><a href="#" class="footer-link">Your Account</a></li>
+                <li><a href="#" class="footer-link">Returns Centre</a></li>
+                <li>
+                  <a href="#" class="footer-link"
+                    >Recalls and Product Safety Alerts</a
+                  >
+                </li>
+                <li>
+                  <a href="#" class="footer-link">100% Purchase Protection</a>
+                </li>
+                <li><a href="#" class="footer-link">Amazon App Download</a></li>
+                <li><a href="#" class="footer-link">Help</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom py-3" style="background: #232f3e">
+        <div class="container d-flex justify-content-center align-items-center">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg"
+            alt="Amazon"
+            style="height: 32px; margin-right: 16px"
+          />
+          <button class="btn btn-outline-light btn-sm me-2">
+            <i class="bi bi-globe"></i> English
+          </button>
+          <button class="btn btn-outline-light btn-sm">
+            <span class="me-1">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/4/41/Flag_of_India.svg"
+                alt="India"
+                style="height: 16px"
+              />
+            </span>
+            India
+          </button>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/cart-manager.js"></script>
+    <script src="js/products.js"></script>
+  
+    <script src="js/nav.js"></script>
+    <script src="js/categories-sidebar.js"></script>
+
+    <script src="js/hero.js"></script>
+    <script src="js/back-to-top.js"></script>
+    <script src="js/product-links.js"></script>
+    
+    <script src="js/app.js"></script>
+    <script src="js/category-navigation.js"></script>
+  </body>
+</html>

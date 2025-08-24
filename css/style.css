@@ -1,0 +1,569 @@
+/* css/style.css */
+
+/* General body styling */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #E3E6E6; /* light gray */
+}
+
+/* Navbar brand */
+.navbar-brand {
+  font-weight: bold;
+  font-size: 1.4rem;
+}
+
+/* Categories section */
+#categories {
+  margin: 0;
+  flex-wrap: wrap;
+}
+#categories .btn {
+  background-color:#232f3e ;
+  border-style: none;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  padding: 6px 14px;
+}
+
+/* Product cards */
+.card {
+  border: none;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Product image sizing */
+.card-img-wrapper {
+  height: 200px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-img {
+  width: 100%;
+  height: 150px;
+  object-fit: contain;
+  transition: transform 0.2s;
+}
+
+.card:hover .product-img {
+  transform: scale(1.05);
+}
+
+/* Card body spacing */
+.card-body {
+  padding: 1.25rem;
+  background: #fff;
+}
+
+/* Product title */
+.card-title {
+  font-size: 1.25rem;
+  
+  height: 2.4rem;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  font-weight: 700;
+  color: #0F1111;
+}
+
+/* Cart table */
+table input[type="number"] {
+  width: 60px;
+  text-align: center;
+}
+
+/* Checkout button */
+.btn-success {
+  font-size: 1.1rem;
+  padding: 10px 20px;
+  border-radius: 8px;
+}
+
+/* Footer (optional if you add) */
+footer {
+  background: #212529;
+  color: #fff;
+  
+  text-align: center;
+  margin-top: 40px;
+}
+.footer-link {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-link:hover {
+  color: #ffc107;
+  text-decoration: underline;
+}
+footer h5 {
+  margin-bottom: 12px;
+}
+.footer-bottom img {
+  background: #fff;
+  border-radius: 4px;
+  padding: 2px 6px;
+}
+
+/* Amazon-like search bar styling */
+.search-bar {
+  background: #fff;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  width: 100%;
+  min-width: 320px;
+  max-width: 100%;
+  height: 37.334px;
+}
+
+
+.search-select {
+  border: none;
+  background: #ededed;
+  color: #333;
+  font-size: 1rem;
+  padding: 0 16px;
+  height: 48px;
+  min-width: 80px;
+  border-right: 1px solid #ddd;
+  border-radius: 0;
+  appearance: none;
+  text-align: center;
+}
+
+.search-input {
+  border: none;
+  outline: none;
+  font-size: 1.1rem;
+  padding: 0 16px;
+  height: 48px;
+  flex: 1 1 auto;
+  background: #fff;
+}
+
+.search-btn {
+  border: none;
+  background: #ffc107;
+  color: #212529;
+  width: 56px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  border-radius: 0;
+  transition: background 0.2s;
+}
+
+.search-btn:hover {
+  background: #f90;
+  color: #000;
+}
+
+/* Remove default focus outlines for a cleaner look */
+.search-select:focus,
+.search-input:focus {
+  box-shadow: 0 0 0 2px #f90, 0 0 0 3px rgba(255,153,0,0.5);
+  outline: none;
+  z-index: 1;
+}
+
+.search-btn:focus {
+  box-shadow: 0 0 0 2px #f90, 0 0 0 3px rgba(255,153,0,0.5);
+  outline: none;
+  z-index: 1;
+}
+
+/* Search bar container hover effect */
+.search-bar:hover {
+  border-color: #f90;
+}
+
+/* Improve search bar container */
+.search-bar {
+  border: 2px solid transparent;
+  transition: border-color 0.15s ease;
+  display: flex;
+  align-items: stretch;
+}
+
+/* Override Bootstrap's default focus styles */
+.form-control:focus,
+.form-select:focus {
+  border-color: #f90;
+  box-shadow: 0 0 0 2px #f90, 0 0 0 3px rgba(255,153,0,0.5);
+}
+
+/* Hero Banner Carousel Arrows */
+.carousel-arrow {
+  position: absolute;
+  top: 25%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.8);
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: #232f3e;
+  z-index: 2;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.carousel-arrow:hover {
+  background: #ffc078;
+}
+.left-arrow {
+  left: 16px;
+}
+.right-arrow {
+  right: 16px;
+}
+
+/* Hero Banner Blur Overlay */
+.hero-blur {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  height: 70%;
+  pointer-events: none;
+  /* Use a gradient mask for smooth blur transition */
+  background: linear-gradient(
+    to bottom,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.1) 20%,
+    rgba(255,255,255,0.3) 40%,
+    rgba(255,255,255,0.7) 100%
+  );
+  backdrop-filter: blur(16px);
+  z-index: 1;
+}
+
+/* Shift sections up to start from middle of hero banner */
+.section-over-hero {
+  margin-top: -45vh; /* Adjust as needed for your banner height */
+  position: relative;
+  z-index: 2;
+}
+.navbar-padding {
+  --bs-navbar-padding-y: 0;
+}
+.catgory-b-color {
+  background-color: #232f3e;
+
+}
+.btn-square {
+  border-radius: 0 !important;
+  min-width: 48px;
+  min-height: 40px;
+  font-weight: 500;
+}
+.ham-size{
+  font-size: 18px;
+}
+
+/* Product Grid Styling */
+.product-img {
+  width: 100%;
+  height: 150px;
+  object-fit: contain;
+  transition: transform 0.2s;
+}
+
+.card:hover .product-img {
+  transform: scale(1.05);
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0F1111;
+  overflow: visible;
+ 
+}
+
+.text-danger {
+  color: #B12704 !important;
+}
+
+/* Make grids same height */
+.row.g-4 > .col-md-6 {
+  display: flex;
+}
+
+.card {
+  width: 100%;
+  background: #fff;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+/* Link styling */
+.text-primary {
+  color: #007185 !important;
+  font-size: 0.9rem;
+}
+
+.text-primary:hover {
+  color: #C7511F !important;
+  text-decoration: underline !important;
+}
+
+
+
+.product-grid-container {
+  width: 100%; /* Let grid control the width */
+  margin-bottom: 0;
+}
+
+.product-grid-card {
+  height: 420px;
+  background: #fff;
+  /* border-radius: 8px; */
+  border: 1px solid #ddd;
+  overflow: hidden;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* Render 4 items in a 2x2 grid inside each product-grid-card */
+.product-items-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* gap: 18px; */
+  margin-bottom: 18px;
+}
+
+.product-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.product-img {
+  width: 100%;
+  max-width: 120px;
+  height: 120px;
+  object-fit: contain;
+  margin-bottom: 8px;
+  transition: transform 0.2s;
+}
+
+.product-item:hover .product-img {
+  transform: scale(1.07);
+}
+
+.product-item-title {
+  font-size: 0.90rem;
+  font-weight: 400;
+  color: #222;
+  text-align: center;
+  margin-bottom: 4px;
+  height: 2.2em;
+  overflow: hidden;
+}
+
+.product-item-price {
+  font-size: 1rem;
+  color: #B12704;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 0;
+}
+
+/* Product Grid Parent */
+#product-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 cards per row */
+  gap: 24px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* Related Products Slider */
+.related-products-container {
+  display: flex;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  gap: 20px;
+  padding: 10px 0;
+}
+
+.related-product-card {
+  min-width: 200px;
+  flex: 0 0 auto;
+  padding: 15px;
+  /* border: 1px solid #ddd; */
+  /* border-radius: 8px; */
+  background: #fff;
+  transition: transform 0.2s;
+}
+
+.related-product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.scroll-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  z-index: 2;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+.scroll-left {
+  left: -20px;
+}
+
+.scroll-right {
+  right: -20px;
+}
+
+.scroll-arrow:hover {
+  background: #f0f0f0;
+}
+
+.related-product-img {
+  width: 100%;
+  height: 150px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+/* Responsive for smaller screens */
+@media (min-width: 1200px) {
+    .container, .container-lg, .container-md, .container-sm, .container-xl {
+        max-width: 1335px;
+    }
+}
+@media (max-width: 1200px) {
+  
+  #product-list {
+    grid-template-columns: repeat(3, 1fr);
+    
+  }
+}
+@media (max-width: 900px) {
+  #product-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  #product-list {
+    grid-template-columns: 1fr;
+  }
+}
+.white-bg {
+  background-color: #fff;
+}
+.padding-top {
+  padding-top: 20px;
+}
+
+#trending-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); 
+  /* 4 cards per row */
+  gap: 24px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+/* Responsive for smaller screens */
+@media (min-width: 1200px) {
+    .container, .container-lg, .container-md, .container-sm, .container-xl {
+        max-width: 1335px;
+    }
+}
+@media (max-width: 1200px) {
+  
+  #trending-list {
+    grid-template-columns: repeat(3, 1fr);
+    
+  }
+}
+@media (max-width: 900px) {
+  #trending-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  #trending-list {
+    grid-template-columns: 1fr;
+  }
+}
+.margin-hero {
+  padding-left: 0 ;
+  padding-right :0 ;
+}
+.nav-a {
+  text-decoration: none;
+  color: white;
+  width: 124px;
+}
+
+#glow-ingress-block {width: 150px;
+    text-align: start;
+ 
+}    
+
+
+.my-add{
+  display: flex;
+align-items: center;
+
+}
+.nav-text{
+  color: white;
+}
+.nav-line-1{
+  color: white;
+}
+.padding-right{
+  padding-right: 10px !important;
+}
+
+.nav-cart {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: white;
+  text-decoration: none;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+}
+
