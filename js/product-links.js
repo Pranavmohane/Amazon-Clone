@@ -77,6 +77,7 @@ class ProductLinks {
                     element.style.cursor = 'pointer';
                     element.addEventListener('click', () => {
                         const category = card.dataset.category;
+                      
                         if (category) {
                             this.navigateToCategory(category);
                         }

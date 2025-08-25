@@ -2,56 +2,250 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Cart</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cart - Amazon Clone</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/cart.css" />
 </head>
-<body class="p-4">
-  <h2>Your Cart</h2>
-  <table class="table">
-    <thead><tr><th>Item</th><th>Qty</th><th>Price</th><th>Total</th><th></th></tr></thead>
-    <tbody id="cart-body"></tbody>
-  </table>
-  <h4 id="cart-total"></h4>
-  <button class="btn btn-success">Proceed to Checkout</button>
-  <!-- <script src="js/app.js"></script> -->
+<body>
+  <!-- Top Navbar -->
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark px-4 navbar-padding">
+    <a class="navbar-brand d-flex align-items-center" href="index.html">
+      <img src="https://www.pngplay.com/wp-content/uploads/3/White-Amazon-Logo-PNG-HD-Quality.png" alt="Amazon" style="height: 32px; margin-top: 19px" />
+      <span class="d-none d-md-inline">.in</span>
+    </a>
+    <a id="nav-global-location-popover-link" class="nav-a " href="">
+      <div id="glow-ingress-block">
+        <span class="nav-line-1 " id="glow-ingress-line1">
+          Deliver to user
+        </span>
+        <span class="nav-line-2 nav-progressive-content" id="glow-ingress-line2">
+          <h6 style="margin: 0;"><i class="bi bi-geo-alt-fill text-white"></i>India</h6>
+        </span>
+      </div>
+    </a>
+    <div class="mx-auto" style="width: 50%">
+      <form id="search-form" class="search-bar d-flex align-items-center">
+        <select id="search-category" class="search-select">
+          <option value="All">All Categories</option>
+          <option value="Mobile Accessories">Mobile Accessories</option>
+          <option value="Camera & Photo">Camera & Photo</option>
+          <option value="Home Appliances">Home Appliances</option>
+          <option value="Fitness">Fitness</option>
+          <option value="Gaming">Gaming</option>
+          <option value="Smart Home">Smart Home</option>
+          <option value="Audio Devices">Audio Devices</option>
+          <option value="Computer Accessories">Computer Accessories</option>
+          <option value="Laptops">Laptops</option>
+          <option value="Smartphones">Smartphones</option>
+          <option value="TVs">TVs</option>
+          <option value="Storage Devices">Storage Devices</option>
+          <option value="Laptop Bags">Laptop Bags</option>
+        </select>
+        <input id="search" class="search-input" type="search" placeholder="Search Amazon.in" />
+        <button class="search-btn" type="submit">
+          <i class="bi bi-search"></i>
+        </button>
+      </form>
+    </div>
+    <div class="d-flex align-items-center">
+      <div class="my-add">
+        <!-- Language -->
+         <a href="" style="text-decoration: none;"> 
+        <div class="my-add1 padding-right">
+          <img src="https://flagcdn.com/w20/in.png" alt="India Flag">
+          <span class="nav-text">EN ▾</span>
+        </div>
+      </a>
+        <!-- Account & Lists -->
+         <a href="" style="text-decoration: none;">
+        <div class="my-add2 padding-right">
+          <span class="nav-line-1">Hello, User</span>
+          <br>
+          <span class="nav-line-1">Account & Lists ▾</span>
+        </div>
+      </a>
+      </div>
+      <a href="cart.html" class="btn btn-warning ms-2" style="background-color: #ffc107;">Cart (<span id="cart-count">0</span>)</a>
+    </div>
+  </nav>
+
+  <!-- Offcanvas Sidebar   -->
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="sidebar">
+    <div class="offcanvas-header bg-dark text-white">
+      <i class="bi bi-person-circle fs-2 me-2"> </i>
+      <h5 class="offcanvas-title">Hello, User</h5>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body">
+      <ul class="list-group">
+        <!-- Category links will be injected here  -->
+      </ul>
+    </div>
+  </div>
+
+  <!-- Category Menu -->
+  <div class="catgory-b-color shadow-sm">
+    <div id="categories" class="container d-flex gap-3 flex-wrap"></div>
+  </div>
+
+  <!-- Cart Content -->
+  <div class="container py-4 white-bg">
+    <div class="cart-container">
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <h2 class="cart-title mb-0">Shopping Cart</h2>
+        <div class="cart-subinfo">Price</div>
+      </div>
+      <table class="table cart-table">
+        <thead>
+          <tr><th>Item</th><th>Qty</th><th>Price</th><th>Total</th><th></th></tr>
+        </thead>
+        <tbody id="cart-body"></tbody>
+      </table>
+      <div class="cart-subtotal">Subtotal (<span id="cart-items-count">0</span> item<span id="cart-items-plural"></span>): <span id="cart-total">₹0</span></div>
+      <button class="btn btn-success proceed-btn mt-3">Proceed to Checkout</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-top py-3" style="background: #37475a">
+      <div class="container text-center">
+        <button id="back-to-top" class="btn btn-link text-white text-decoration-none">Back to top</button>
+      </div>
+    </div>
+    <div class="footer-links py-4" style="background: #232f3e">
+      <div class="container">
+        <div class="row text-white">
+          <div class="col-md-3 mb-3">
+            <h5 class="fw-bold">Get to Know Us</h5>
+            <ul class="list-unstyled">
+              <li><a href="#" class="footer-link">About Amazon</a></li>
+              <li><a href="#" class="footer-link">Careers</a></li>
+              <li><a href="#" class="footer-link">Press Releases</a></li>
+              <li><a href="#" class="footer-link">Amazon Science</a></li>
+            </ul>
+          </div>
+          <div class="col-md-3 mb-3">
+            <h5 class="fw-bold">Connect with Us</h5>
+            <ul class="list-unstyled">
+              <li><a href="#" class="footer-link">Facebook</a></li>
+              <li><a href="#" class="footer-link">Twitter</a></li>
+              <li><a href="#" class="footer-link">Instagram</a></li>
+            </ul>
+          </div>
+          <div class="col-md-3 mb-3">
+            <h5 class="fw-bold">Make Money with Us</h5>
+            <ul class="list-unstyled">
+              <li><a href="#" class="footer-link">Sell on Amazon</a></li>
+              <li><a href="#" class="footer-link">Sell under Amazon Accelerator</a></li>
+              <li><a href="#" class="footer-link">Protect and Build Your Brand</a></li>
+              <li><a href="#" class="footer-link">Amazon Global Selling</a></li>
+              <li><a href="#" class="footer-link">Supply to Amazon</a></li>
+              <li><a href="#" class="footer-link">Become an Affiliate</a></li>
+              <li><a href="#" class="footer-link">Fulfilment by Amazon</a></li>
+              <li><a href="#" class="footer-link">Advertise Your Products</a></li>
+              <li><a href="#" class="footer-link">Amazon Pay on Merchants</a></li>
+            </ul>
+          </div>
+          <div class="col-md-3 mb-3">
+            <h5 class="fw-bold">Let Us Help You</h5>
+            <ul class="list-unstyled">
+              <li><a href="#" class="footer-link">Your Account</a></li>
+              <li><a href="#" class="footer-link">Returns Centre</a></li>
+              <li><a href="#" class="footer-link">Recalls and Product Safety Alerts</a></li>
+              <li><a href="#" class="footer-link">100% Purchase Protection</a></li>
+              <li><a href="#" class="footer-link">Amazon App Download</a></li>
+              <li><a href="#" class="footer-link">Help</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom py-3" style="background: #232f3e">
+      <div class="container d-flex justify-content-center align-items-center">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon" style="height: 32px; margin-right: 16px" />
+        <button class="btn btn-outline-light btn-sm me-2"><i class="bi bi-globe"></i> English</button>
+        <button class="btn btn-outline-light btn-sm">
+          <span class="me-1">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Flag_of_India.svg" alt="India" style="height: 16px" />
+          </span>
+          India
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/cart-manager.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/categories-sidebar.js"></script>
+  <script src="js/back-to-top.js"></script>
+  <script src="js/product-links.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/category-navigation.js"></script>
+
   <script>
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
-    // console.log("Cart contents:", cart);
+    // Use shared cart state from CartManager
+    window.cart = window.cart || JSON.parse(localStorage.getItem("cart")) || [];
     const body = document.getElementById("cart-body");
 
     function renderCart() {
       body.innerHTML = "";
       let total = 0;
-      cart.forEach((p,i)=>{
-        let row = document.createElement("tr");
+      window.cart.forEach((p,i)=>{
+        const row = document.createElement("tr");
         total += p.price * p.qty;
         row.innerHTML = `
-          <td>${p.title}</td>
-          <td><input type='number' value='${p.qty}' min='1' onchange='updateQty(${i}, this.value)'></td>
-          <td>₹${p.price}</td>
-          <td>₹${p.price * p.qty}</td>
-          <td><button class='btn btn-danger btn-sm' onclick='removeItem(${i})'>X</button></td>`;
+          <td class="cart-item-cell" colspan="3">
+            <div class="cart-item">
+              <img src="${p.img}" alt="${p.title}" class="cart-thumb" onerror="handleImageError(this)">
+              <div class="cart-details">
+                <h5 class="product-link">${p.title}</h5>
+                <div class="cart-meta">In stock</div>
+                <div class="cart-badges">
+                  <span class="badge text-bg-light border">Fulfilled</span>
+                </div>
+                <div class="cart-actions">
+                  <input type='number' class='qty-input' value='${p.qty}' min='1' onchange='updateQty(${i}, this.value)'>
+                  <a href="#" class="link-action" onclick='removeItem(${i}); return false;'>Delete</a>
+                  <a href="#" class="link-action">Save for later</a>
+                  <a href="#" class="link-action">See more like this</a>
+                  <a href="#" class="link-action">Share</a>
+                </div>
+              </div>
+              <div class="cart-price">₹${p.price.toLocaleString()}</div>
+            </div>
+          </td>
+        `;
         body.appendChild(row);
       });
-     document.getElementById("cart-total").textContent = "Total: ₹" + total;
-
+      document.getElementById("cart-total").textContent = `₹${total.toLocaleString()}`;
+      const count = window.cart.reduce((a,b)=>a+b.qty,0);
+      document.getElementById('cart-items-count').textContent = count;
+      document.getElementById('cart-items-plural').textContent = count === 1 ? '' : 's';
     }
 
     function updateQty(index, val) {
-      cart[index].qty = parseInt(val);
-      localStorage.setItem("cart", JSON.stringify(cart));
+      window.cart[index].qty = parseInt(val);
+      localStorage.setItem("cart", JSON.stringify(window.cart));
+      if (window.CartManager) { CartManager.updateCartCount(); }
       renderCart();
     }
 
     function removeItem(index) {
-      cart.splice(index,1);
-      localStorage.setItem("cart", JSON.stringify(cart));
+      window.cart.splice(index,1);
+      localStorage.setItem("cart", JSON.stringify(window.cart));
+      if (window.CartManager) { CartManager.updateCartCount(); }
       renderCart();
     }
 
-    renderCart();
-    
-
+    document.addEventListener('DOMContentLoaded', function() {
+      renderCart();
+    });
   </script>
 </body>
 </html>

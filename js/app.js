@@ -4,8 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // Initialize all components
         initializeSearch();
         renderCategories();
-        // initializeSidebar();
-        // initializeHero();
+        initializeSidebar();
+        initializeHero();
         renderProducts();
         updateCartCount();
         

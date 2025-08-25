@@ -16,18 +16,21 @@
     <link rel="stylesheet" href="css/category.css" />
   </head>
   <body>
-    <!-- Copy Navbar from index.html -->
-    <nav
-      class="navbar navbar-expand-lg bg-dark navbar-dark px-4 navbar-padding"
-    >
-      <!-- ...existing navbar code... -->
+    <!-- Top Navbar (synced with index.html) -->
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark px-4 navbar-padding">
       <a class="navbar-brand d-flex align-items-center" href="index.html">
-        <img
-          src="https://www.pngplay.com/wp-content/uploads/3/White-Amazon-Logo-PNG-HD-Quality.png"
-          alt="Amazon"
-          style="height: 32px; margin-right: 8px; margin-top: 19px"
-        />
+        <img src="https://www.pngplay.com/wp-content/uploads/3/White-Amazon-Logo-PNG-HD-Quality.png" alt="Amazon" style="height: 32px; margin-top: 19px" />
         <span class="d-none d-md-inline">.in</span>
+      </a>
+      <a id="nav-global-location-popover-link" class="nav-a " href="">
+        <div id="glow-ingress-block">
+          <span class="nav-line-1 " id="glow-ingress-line1">
+            Deliver to user
+          </span>
+          <span class="nav-line-2 nav-progressive-content" id="glow-ingress-line2">
+            <h6 style="margin: 0;"><i class="bi bi-geo-alt-fill text-white"></i>India</h6>
+          </span>
+        </div>
       </a>
       <div class="mx-auto" style="width: 50%">
         <form id="search-form" class="search-bar d-flex align-items-center">
@@ -47,24 +50,31 @@
             <option value="Storage Devices">Storage Devices</option>
             <option value="Laptop Bags">Laptop Bags</option>
           </select>
-          <input
-            id="search"
-            class="search-input"
-            type="search"
-            placeholder="Search Amazon.in"
-          />
+          <input id="search" class="search-input" type="search" placeholder="Search Amazon.in" />
           <button class="search-btn" type="submit">
             <i class="bi bi-search"></i>
           </button>
         </form>
       </div>
       <div class="d-flex align-items-center">
-        <a href="#" class="btn btn-link text-white me-2"
-          ><i class="bi bi-person"></i> Account</a
-        >
-        <a href="cart.html" class="btn btn-warning ms-2"
-          >Cart (<span id="cart-count">0</span>)</a
-        >
+        <div class="my-add">
+          <!-- Language -->
+           <a href="" style="text-decoration: none;">
+          <div class="my-add1 padding-right">
+            <img src="https://flagcdn.com/w20/in.png" alt="India Flag"> 
+            <span class="nav-text">EN ▾</span>
+          </div>
+          </a>
+          <!-- Account & Lists -->
+           <a href="" style="text-decoration: none;">
+          <div class="my-add2 padding-right">
+            <span class="nav-line-1">Hello, User</span>
+            <br>
+            <span class="nav-line-1">Account & Lists ▾</span>
+          </div>
+          </a>
+        </div>
+        <a href="cart.html" class="btn btn-warning ms-2"  style="background-color: #ffc107;">Cart (<span id="cart-count">0</span>)</a >
       </div>
     </nav>
 

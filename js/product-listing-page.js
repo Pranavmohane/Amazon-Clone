@@ -1,7 +1,9 @@
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
-// Get category from URL parameters
+// Get category and search params from URL parameters
 const urlParams = new URLSearchParams(window.location.search);
 const category = urlParams.get('category') || sessionStorage.getItem('selectedCategory') || 'all';
+const searchQuery = (urlParams.get('q') || '').trim();
+const searchMode = (urlParams.get('mode') || '').trim();
 
 function getProductsByCategory(category) {
     // Combine all product arrays
@@ -16,7 +18,7 @@ function getProductsByCategory(category) {
     // Remove duplicates
     const uniqueProducts = [...new Map(allProducts.map(item => [item.id, item])).values()];
 
-    switch(category.toLowerCase()) {
+    switch (category.toLowerCase()) {
         case 'all':
             return uniqueProducts;
         case 'related':
@@ -35,7 +37,7 @@ function getProductsByCategory(category) {
 // Add this function at the top of your file
 function handleImageError(img) {
     // Remove the onerror handler to prevent multiple requests
-    img.onerror = null;  
+    img.onerror = null;
     // Set default placeholder image
     img.src = 'https://via.placeholder.com/300x300?text=Image+Not+Found';
     // Add a class to dim the broken image
@@ -56,7 +58,7 @@ class ProductListingPage {
     }
 
     getProducts() {
-        switch(this.category.toLowerCase()) {
+        switch (this.category.toLowerCase()) {
             case 'related':
                 return RELATED_PRODUCTS;
             case 'recommended':
@@ -79,7 +81,7 @@ class ProductListingPage {
                     ...TRENDING_PRODUCTS,
                     ...NEW_PRODUCTS
                 ];
-                return allProducts.filter(p => 
+                return allProducts.filter(p =>
                     p.category.toLowerCase() === this.category.toLowerCase()
                 );
         }
@@ -92,9 +94,12 @@ class ProductListingPage {
             'new_arrivals': 'New Arrivals in Electronics',
             'all': 'All Products'
         };
-        
-        this.titleElement.textContent = titles[this.category.toLowerCase()] || 
-            `${this.category.charAt(0).toUpperCase() + this.category.slice(1)} Products`;
+
+        if (searchQuery) {
+            this.titleElement.textContent = searchMode === 'product' ? `Search: ${searchQuery}` : `Results for "${searchQuery}"`;
+            return;
+        }
+        this.titleElement.textContent = titles[this.category.toLowerCase()] || `${this.category.charAt(0).toUpperCase() + this.category.slice(1)} Products`;
     }
 
     initialize() {
@@ -108,7 +113,28 @@ class ProductListingPage {
     }
 
     renderProducts() {
-        const products = this.getProducts();
+        let products = this.getProducts();
+
+        // Apply search routing if needed
+        if (searchQuery) {
+            const allProducts = [
+                ...PRODUCTS,
+                ...RELATED_PRODUCTS,
+                ...RECOMMENDED_PRODUCTS,
+                ...TRENDING_PRODUCTS,
+                ...NEW_PRODUCTS
+            ];
+            const uniqueProducts = [...new Map(allProducts.map(item => [item.id, item])).values()];
+
+            if (searchMode === 'product') {
+                products = uniqueProducts.filter(p => p.title.toLowerCase() === searchQuery.toLowerCase());
+            } else {
+                products = uniqueProducts.filter(p =>
+                    p.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                    p.category.toLowerCase().includes(searchQuery.toLowerCase())
+                );
+            }
+        }
 
         if (!products || products.length === 0) {
             this.container.innerHTML = `
